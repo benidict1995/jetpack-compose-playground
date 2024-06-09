@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.dagger.hilt.android)
-    id ("kotlin-kapt")
+    alias(libs.plugins.ktlint.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -27,7 +28,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -52,6 +53,9 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.android.lottie.compose)
+    implementation(libs.androidx.navigation)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)
     implementation(libs.androidx.hilt.compose)
