@@ -11,7 +11,11 @@ import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
+import com.benidict.trainingcamp.R
+import com.benidict.trainingcamp.ui.component.fab.MultiFloatingActionButton
+import com.benidict.trainingcamp.ui.component.fab.model.FabItem
 import com.benidict.trainingcamp.ui.theme.PrimaryBlue
 import com.benidict.trainingcamp.ui.theme.TertiaryBlue02
 
@@ -35,10 +39,9 @@ fun HomeScreen(navController: NavHostController) {
         },
         floatingActionButton = {
             MultiFloatingActionButton(
-                fabIcon = painterResource(id = R.drawable.ic_fab_add),
+                fabIcon = painterResource(id = R.drawable.ic_launcher_background),
                 items = arrayListOf(
-                    FabItem(icon = painterResource(id = R.drawable.ic_fab_add), label = "Button 1") {
-                        Toast.makeText(applicationContext, "Floating Button clicked", Toast.LENGTH_LONG).show()
+                    FabItem(icon = painterResource(id = R.drawable.ic_launcher_background), title = "Button 1") {
                     },
                 ),
             )

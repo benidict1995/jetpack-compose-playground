@@ -53,6 +53,7 @@ android {
 }
 
 dependencies {
+    api (project(":data"))
 
     implementation(libs.android.lottie.compose)
     implementation(libs.androidx.navigation)
