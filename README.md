@@ -7,3 +7,4 @@
 - Hilt Dagger
 - DataStore
 - Coroutines
+- Kotlin linter (ktlint)
