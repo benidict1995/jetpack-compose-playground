@@ -70,10 +70,13 @@ fun FabButton() {
 
 @Preview
 @Composable
-fun ViewMultiFloatingButton(){
-    MultiFloatingActionButton(fabIcon = painterResource(id = R.drawable.ic_launcher_background), items = arrayListOf(
-        FabItem(icon =  painterResource(id = R.drawable.ic_launcher_background), title = "",{})
-    ))
+fun ViewMultiFloatingButton() {
+    MultiFloatingActionButton(
+        fabIcon = painterResource(id = R.drawable.ic_launcher_background),
+        items = arrayListOf(
+            FabItem(icon = painterResource(id = R.drawable.ic_launcher_background), title = "", {}),
+        ),
+    )
 }
 
 @Composable
@@ -81,7 +84,7 @@ fun MultiFloatingActionButton(
     fabIcon: Painter,
     items: List<FabItem>,
     showLabels: Boolean = true,
-    onStateChanged: ((state: FabSubState) -> Unit)? = null
+    onStateChanged: ((state: FabSubState) -> Unit)? = null,
 ) {
     var currentState by remember { mutableStateOf(FabSubState.COLLAPSED) }
     val stateTransition: Transition<FabSubState> =
@@ -89,7 +92,9 @@ fun MultiFloatingActionButton(
     val stateChange: () -> Unit = {
         currentState = if (stateTransition.currentState == FabSubState.EXPANDED) {
             FabSubState.COLLAPSED
-        } else FabSubState.EXPANDED
+        } else {
+            FabSubState.EXPANDED
+        }
         onStateChanged?.invoke(currentState)
     }
     val rotation: Float by stateTransition.animateFloat(
@@ -100,7 +105,7 @@ fun MultiFloatingActionButton(
                 spring(stiffness = Spring.StiffnessMedium)
             }
         },
-        label = ""
+        label = "",
     ) { state ->
         if (state == FabSubState.EXPANDED) 45f else 0f
     }
@@ -110,32 +115,38 @@ fun MultiFloatingActionButton(
         currentState = FabSubState.COLLAPSED
     }
 
-    val modifier = if(currentState ==   FabSubState.EXPANDED)
+    val modifier = if (currentState == FabSubState.EXPANDED) {
         Modifier
             .fillMaxSize()
-            .clickable(indication = null,
-                interactionSource = remember { MutableInteractionSource() }) {
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() },
+            ) {
                 currentState = FabSubState.COLLAPSED
-            } else Modifier.fillMaxSize()
+            }
+    } else {
+        Modifier.fillMaxSize()
+    }
 
     Box(modifier = modifier, contentAlignment = Alignment.BottomEnd) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(400.dp),
-            contentAlignment = Alignment.BottomEnd
+            contentAlignment = Alignment.BottomEnd,
         ) {
             if (currentState == FabSubState.EXPANDED) {
-                Canvas(modifier = Modifier
-                    .fillMaxSize()
-                    .graphicsLayer {
-                        scaleX = 2.2f
-                        scaleY = 2.1f
-                    }) {
+                Canvas(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .graphicsLayer {
+                            scaleX = 2.2f
+                            scaleY = 2.1f
+                        },
+                ) {
                     translate(150f, top = 300f) {
                         scale(5f) {}
                         drawCircle(Color.Gray, radius = 200.dp.toPx())
-
                     }
                 }
             }
@@ -147,7 +158,7 @@ fun MultiFloatingActionButton(
                     SmallFloatingActionButtonRow(
                         item = item,
                         stateTransition = stateTransition,
-                        showLabel = showLabels
+                        showLabel = showLabels,
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                 }
@@ -156,37 +167,36 @@ fun MultiFloatingActionButton(
                     containerColor = Color.Blue,
                     onClick = {
                         stateChange()
-                    }) {
+                    },
+                ) {
                     Icon(
                         painter = fabIcon,
                         contentDescription = null,
                         tint = Color.White,
-                        modifier = Modifier.rotate(rotation)
+                        modifier = Modifier.rotate(rotation),
                     )
                 }
             }
-
         }
     }
-
 }
-
 
 @Composable
 fun SmallFloatingActionButtonRow(
     item: FabItem,
     showLabel: Boolean,
-    stateTransition: Transition<FabSubState>
+    stateTransition: Transition<FabSubState>,
 ) {
     val alpha: Float by stateTransition.animateFloat(
         transitionSpec = {
             tween(durationMillis = 50)
-        }, label = ""
+        },
+        label = "",
     ) { state ->
         if (state == FabSubState.EXPANDED) 1f else 0f
     }
     val scale: Float by stateTransition.animateFloat(
-        label = ""
+        label = "",
     ) { state ->
         if (state == FabSubState.EXPANDED) 1.0f else 0f
     }
@@ -194,14 +204,14 @@ fun SmallFloatingActionButtonRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .alpha(animateFloatAsState((alpha), label = "").value)
-            .scale(animateFloatAsState(targetValue = scale, label = "").value)
+            .scale(animateFloatAsState(targetValue = scale, label = "").value),
     ) {
         if (showLabel) {
             Text(
                 text = item.title,
                 modifier = Modifier
                     .padding(start = 6.dp, end = 6.dp, top = 4.dp, bottom = 4.dp)
-                    .clickable(onClick = { item.onItemClicked() })
+                    .clickable(onClick = { item.onItemClicked() }),
             )
         }
         SmallFloatingActionButton(
@@ -210,11 +220,11 @@ fun SmallFloatingActionButtonRow(
                 .padding(4.dp),
             onClick = { item.onItemClicked() },
             containerColor = Color.Blue,
-            contentColor = Color.White
+            contentColor = Color.White,
         ) {
             Icon(
                 painter = item.icon,
-                contentDescription = item.title
+                contentDescription = item.title,
             )
         }
     }
