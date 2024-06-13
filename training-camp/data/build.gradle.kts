@@ -32,6 +32,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    flavorDimensions += "env"
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+        }
+        create("prod") {
+            dimension = "env"
+        }
+    }
 }
 
 dependencies {

@@ -50,6 +50,15 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    flavorDimensions += "env"
+    productFlavors {
+        create("dev") {
+            dimension = "env"
+        }
+        create("prod") {
+            dimension = "env"
+        }
+    }
 }
 
 dependencies {
@@ -57,6 +66,7 @@ dependencies {
 
     implementation(libs.android.lottie.compose)
     implementation(libs.androidx.navigation)
+    implementation(libs.androidx.hilt.navigation)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.dagger.hilt.android)
     implementation(libs.androidx.hilt.compose)

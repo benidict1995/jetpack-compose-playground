@@ -41,11 +41,13 @@ android {
     productFlavors {
         create("dev") {
             dimension = "env"
-            buildConfigField("String", "BASE_URL", "https://api.api-ninjas.com/v1/")
+            buildConfigField("String", "API_KEY", "\"UDou9LDrx3uBbl8AGhudVw==l9cw1WCv2G4K6ChN\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.api-ninjas.com/v1/\"")
         }
         create("prod") {
             dimension = "env"
-            buildConfigField("String", "BASE_URL", "https://api.api-ninjas.com/v1/")
+            buildConfigField("String", "API_KEY", "\"UDou9LDrx3uBbl8AGhudVw==l9cw1WCv2G4K6ChN\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.api-ninjas.com/v1/\"")
         }
     }
 }
@@ -54,6 +56,8 @@ dependencies {
     implementation(project(":domain"))
 
     kapt(libs.dagger.hilt.compiler)
+    implementation(libs.okhttp)
+    implementation(libs.interceptor)
     implementation(libs.gson)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
