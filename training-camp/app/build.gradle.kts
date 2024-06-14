@@ -62,7 +62,8 @@ android {
 }
 
 dependencies {
-    api(project(":data"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     implementation(libs.android.lottie.compose)
     implementation(libs.androidx.navigation)

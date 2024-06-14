@@ -1,5 +1,6 @@
 package com.benidict.domain.model
 
+
 data class Exercise (
     val name: String,
     val type: String,

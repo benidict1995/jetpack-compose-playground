@@ -11,7 +11,7 @@ class ExerciseRemoteSource @Inject constructor(
 ) {
 
     suspend fun loadExercises(): List<Exercise> {
-        val invoke = api.loadExercises(token = BuildConfig.API_KEY)
+        val invoke = api.loadExercises(token = BuildConfig.API_KEY, 50)
         return ExerciseDTO.toDomain(invoke)
     }
 }
