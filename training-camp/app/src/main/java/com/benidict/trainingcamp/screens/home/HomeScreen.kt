@@ -19,7 +19,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.benidict.domain.utils.toJson
 import com.benidict.trainingcamp.R
+import com.benidict.trainingcamp.route.ExerciseDetailsRoute
 import com.benidict.trainingcamp.ui.component.card.ExerciseCard
 import com.benidict.trainingcamp.ui.component.fab.MultiFloatingActionButton
 import com.benidict.trainingcamp.ui.component.fab.model.FabItem
@@ -70,7 +72,13 @@ fun HomeScreen(navController: NavHostController) {
             LazyColumn(modifier = Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp)) {
                 items(exercises.value.size) { index ->
                     HorizontalDivider(color = Color.Transparent, modifier = Modifier.height(10.dp))
-                    ExerciseCard(exercise = exercises.value[index])
+                    ExerciseCard(exercise = exercises.value[index]) {
+                        navController.navigate(
+                            ExerciseDetailsRoute(
+                                it.toJson().orEmpty(),
+                            ),
+                        )
+                    }
                 }
             }
         }

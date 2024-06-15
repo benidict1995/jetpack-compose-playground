@@ -1,6 +1,7 @@
 package com.benidict.trainingcamp.ui.component.card
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,23 +23,30 @@ import com.benidict.trainingcamp.ext.exerciseLevelBackground
 import com.benidict.trainingcamp.ui.theme.sfProFamily
 
 @Composable
-fun ExerciseCard(exercise: Exercise) {
+fun ExerciseCard(exercise: Exercise, onClick: (Exercise) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .shadow(.5.dp, shape = RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp))
-            .background(color = Color.White, shape = RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp)),
+            .background(color = Color.White, shape = RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp))
+            .clickable {
+                onClick(exercise)
+            },
     ) {
         Column(modifier = Modifier.padding(16.dp, 10.dp, 16.dp, 10.dp)) {
-            Text(
-                text = exercise.difficulty,
+            Box(
                 modifier = Modifier
                     .background(
                         color = exerciseLevelBackground(exercise.difficulty),
                         shape = RoundedCornerShape(4.dp, 4.dp, 4.dp, 4.dp),
                     ),
-                color = Color.White,
-            )
+            ) {
+                Text(
+                    modifier = Modifier.padding(5.dp, 2.dp, 5.dp, 2.dp),
+                    text = exercise.difficulty,
+                    color = Color.White,
+                )
+            }
             Text(
                 text = exercise.name,
                 fontFamily = sfProFamily,
@@ -63,5 +71,6 @@ fun ExerciseCard(exercise: Exercise) {
 fun ExerciseCardPreview() {
     ExerciseCard(
         exercise,
-    )
+    ) {
+    }
 }

@@ -1,6 +1,12 @@
 package com.benidict.trainingcamp.route
 
-sealed class Screens(val route: String) {
-    object Splash : Screens("splash_screen")
-    object Home : Screens("home_screen")
-}
+import kotlinx.serialization.Serializable
+
+@Serializable
+object SplashRoute
+
+@Serializable
+object HomeRoute
+
+@Serializable
+data class ExerciseDetailsRoute(val exercise: String)

@@ -4,7 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.benidict.trainingcamp.route.Screens
+import androidx.navigation.toRoute
+import com.benidict.domain.model.Exercise
+import com.benidict.domain.utils.fromJson
+import com.benidict.trainingcamp.route.ExerciseDetailsRoute
+import com.benidict.trainingcamp.route.HomeRoute
+import com.benidict.trainingcamp.route.SplashRoute
+import com.benidict.trainingcamp.screens.exercisedetails.ExerciseDetailsScreen
 import com.benidict.trainingcamp.screens.home.HomeScreen
 import com.benidict.trainingcamp.screens.splash.SplashScreen
 
@@ -12,13 +18,18 @@ import com.benidict.trainingcamp.screens.splash.SplashScreen
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screens.Splash.route,
+        startDestination = SplashRoute,
     ) {
-        composable(route = Screens.Splash.route) {
+        composable<SplashRoute> {
             SplashScreen(navController = navController)
         }
-        composable(route = Screens.Home.route) {
+        composable<HomeRoute> {
             HomeScreen(navController = navController)
+        }
+        composable<ExerciseDetailsRoute> {
+            val args = it.toRoute<ExerciseDetailsRoute>()
+            val exercise = args.exercise.fromJson(Exercise::class.java)
+            ExerciseDetailsScreen(exercise)
         }
     }
 }

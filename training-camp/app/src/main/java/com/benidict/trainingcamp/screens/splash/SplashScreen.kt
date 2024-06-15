@@ -13,7 +13,8 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.benidict.trainingcamp.R
 import com.benidict.trainingcamp.ext.navigateWithPopUp
-import com.benidict.trainingcamp.route.Screens
+import com.benidict.trainingcamp.route.HomeRoute
+import com.benidict.trainingcamp.route.SplashRoute
 import com.benidict.trainingcamp.ui.theme.PrimaryBlue
 
 @Composable
@@ -31,7 +32,7 @@ fun SplashScreen(navController: NavHostController) {
             progress = { logoAnimationState.progress },
         )
         if (logoAnimationState.isAtEnd && logoAnimationState.isPlaying) {
-            navController.navigateWithPopUp(Screens.Home.route, Screens.Splash.route)
+            navController.navigateWithPopUp(HomeRoute, SplashRoute)
         }
     }
 }

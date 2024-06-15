@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.dagger.hilt.android)
     alias(libs.plugins.ktlint.android)
+    alias(libs.plugins.serialization)
     id("kotlin-kapt")
 }
 
@@ -65,6 +66,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
 
+    implementation(libs.serialization)
     implementation(libs.android.lottie.compose)
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.hilt.navigation)

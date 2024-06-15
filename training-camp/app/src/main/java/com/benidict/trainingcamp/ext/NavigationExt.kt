@@ -3,8 +3,8 @@ package com.benidict.trainingcamp.ext
 import androidx.navigation.NavHostController
 
 fun NavHostController.navigateWithPopUp(
-    toRoute: String,
-    fromRoute: String,
+    toRoute: Any,
+    fromRoute: Any,
 ) {
     this.navigate(toRoute) {
         popUpTo(fromRoute) {
