@@ -4,7 +4,7 @@
 - Lottie Compose
 - Jetpack Compose
 - Navigation Compose
+- Navigation Typesafe
 - Hilt Dagger
-- DataStore
 - Coroutines
 - Kotlin linter (ktlint)
