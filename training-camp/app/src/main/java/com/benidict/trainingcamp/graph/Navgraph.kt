@@ -29,7 +29,7 @@ fun SetupNavGraph(navController: NavHostController) {
         composable<ExerciseDetailsRoute> {
             val args = it.toRoute<ExerciseDetailsRoute>()
             val exercise = args.exercise.fromJson(Exercise::class.java)
-            ExerciseDetailsScreen(exercise)
+            ExerciseDetailsScreen(navController, exercise)
         }
     }
 }

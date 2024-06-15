@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.benidict.domain.model.Exercise
 import com.benidict.domain.test.exercise
-import com.benidict.trainingcamp.ext.exerciseLevelBackground
 import com.benidict.trainingcamp.ui.theme.sfProFamily
 
 @Composable
@@ -33,35 +32,25 @@ fun ExerciseCard(exercise: Exercise, onClick: (Exercise) -> Unit) {
                 onClick(exercise)
             },
     ) {
-        Column(modifier = Modifier.padding(16.dp, 10.dp, 16.dp, 10.dp)) {
-            Box(
-                modifier = Modifier
-                    .background(
-                        color = exerciseLevelBackground(exercise.difficulty),
-                        shape = RoundedCornerShape(4.dp, 4.dp, 4.dp, 4.dp),
-                    ),
-            ) {
+        Column(modifier = Modifier.padding(4.dp, 10.dp, 16.dp, 10.dp)) {
+            LevelCards(exercise.difficulty)
+            Column(modifier = Modifier.padding(4.dp, 0.dp, 0.dp, 0.dp)) {
                 Text(
-                    modifier = Modifier.padding(5.dp, 2.dp, 5.dp, 2.dp),
-                    text = exercise.difficulty,
-                    color = Color.White,
+                    text = exercise.name,
+                    fontFamily = sfProFamily,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 17.sp,
+                )
+                Text(
+                    text = exercise.instructions,
+                    fontSize = 13.sp,
+                    fontFamily = sfProFamily,
+                    fontWeight = FontWeight.Normal,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    lineHeight = 15.sp,
                 )
             }
-            Text(
-                text = exercise.name,
-                fontFamily = sfProFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = 17.sp,
-            )
-            Text(
-                text = exercise.instructions,
-                fontSize = 13.sp,
-                fontFamily = sfProFamily,
-                fontWeight = FontWeight.Normal,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                lineHeight = 15.sp,
-            )
         }
     }
 }
