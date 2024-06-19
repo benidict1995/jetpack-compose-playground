@@ -1,5 +1,6 @@
 package com.benidict.trainingcamp.screens.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.benidict.data.usecase.LoadExercisesUseCase
@@ -27,6 +28,7 @@ class HomeViewModel @Inject constructor(
                 val invoke = loadExercisesUseCase.invoke()
                 _exerciseState.emit(invoke)
             } catch (e: Exception) {
+                Log.d("makerChecker", "errrror:${e.message}")
                 _errorState.emit(e.message ?: e.localizedMessage)
             }
         }
