@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">jetpackanimation</string>
+    <string name="animated_visibility">Animated Visibility</string>
+    <string name="animate_content_size">Animate Content Size</string>
+    <string name="animated_content">Animated Content</string>
+    <string name="animate_as_state">Animate AsState</string>
+    <string name="transition">Transition</string>
+    <string name="infinite_transition">Infinite Transition</string>
+
+    <string name="animated_visibility_desc">By default, the content appears by fading in and expanding, and it disappears by fading out and shrinking. The transition can be customized by specifying EnterTransition and ExitTransition.</string>
+</resources>
