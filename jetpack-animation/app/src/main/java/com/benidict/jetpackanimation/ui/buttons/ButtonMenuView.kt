@@ -29,7 +29,6 @@ fun ButtonMenuView(
         Text(
             text = title
         )
-        Log.d("makerChecker", "rememberClick:$rememberClick")
         if (rememberClick) {
             rememberClick = false
             content()

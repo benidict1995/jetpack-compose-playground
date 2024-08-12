@@ -30,6 +30,7 @@ import com.benidict.jetpackanimation.ui.buttons.ButtonMenuView
 @Composable
 fun HomeScreen(navController: NavHostController) {
     MainLayoutView(
+        navController = navController,
         title = stringResource(R.string.app_name)
     ) { padding ->
         Column(

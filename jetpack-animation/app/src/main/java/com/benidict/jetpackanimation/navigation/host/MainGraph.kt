@@ -16,7 +16,7 @@ fun MainGraph(navHostController: NavHostController) {
             HomeScreen(navHostController)
         }
         composable<AnimatedVisibilityRoute> {
-            AnimatedVisibilityScreen()
+            AnimatedVisibilityScreen(navHostController)
         }
     }
 }
