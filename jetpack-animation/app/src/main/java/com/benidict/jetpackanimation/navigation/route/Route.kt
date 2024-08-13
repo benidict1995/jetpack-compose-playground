@@ -6,4 +6,7 @@ import kotlinx.serialization.Serializable
 object AnimatedVisibilityRoute
 
 @Serializable
+object AnimateContentSizeRoute
+
+@Serializable
 object HomeRoute
