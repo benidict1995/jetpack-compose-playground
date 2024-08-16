@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.benidict.jetpackanimation.R
 import com.benidict.jetpackanimation.component.MainLayoutView
+import com.benidict.jetpackanimation.navigation.route.AnimateContentSizeRoute
+import com.benidict.jetpackanimation.navigation.route.AnimatedContentRoute
 import com.benidict.jetpackanimation.navigation.route.AnimatedVisibilityRoute
 import com.benidict.jetpackanimation.screen.animatedvisibility.AnimatedVisibilityScreen
 import com.benidict.jetpackanimation.ui.buttons.ButtonMenuView
@@ -48,13 +50,13 @@ fun HomeScreen(navController: NavHostController) {
             ButtonMenuView(
                 title = stringResource(R.string.animate_content_size)
             ) {
-
+                navController.navigate(AnimateContentSizeRoute)
             }
 
             ButtonMenuView(
                 title = stringResource(R.string.animated_content)
             ) {
-
+                navController.navigate(AnimatedContentRoute)
             }
 
             ButtonMenuView(

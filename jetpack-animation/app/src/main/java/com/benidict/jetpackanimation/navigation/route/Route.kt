@@ -7,3 +7,9 @@ object AnimatedVisibilityRoute
 
 @Serializable
 object HomeRoute
+
+@Serializable
+object AnimateContentSizeRoute
+
+@Serializable
+object AnimatedContentRoute
